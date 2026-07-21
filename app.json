@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "SAOK_ROOMPAD",
+    "name": "SAOK 룸패드",
     "slug": "SAOK_ROOMPAD",
-    "version": "1.0.0",
+    "version": "4.0.1",
     "orientation": "landscape",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -13,15 +13,20 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIBackgroundModes": ["fetch"]
+      }
     },
     "android": {
+      "versionCode": 4,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/adaptive-icon-foreground.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.saokok.SAOK_ROOMPAD"
     },
     "web": {
       "favicon": "./assets/favicon.png"

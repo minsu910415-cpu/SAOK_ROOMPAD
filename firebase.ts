@@ -1,6 +1,7 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { FirebaseApp, getApp, getApps, initializeApp } from "firebase/app";
-import { Auth, getAuth } from "firebase/auth";
-import { Firestore, getFirestore } from "firebase/firestore";
+import { Auth, getAuth, getReactNativePersistence, initializeAuth } from "firebase/auth";
+import { Firestore, getFirestore, initializeFirestore } from "firebase/firestore";
 import { Platform } from "react-native";
 
 const firebaseConfig = {
@@ -14,8 +15,20 @@ const firebaseConfig = {
 };
 
 const app: FirebaseApp = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
-const db: Firestore = getFirestore(app);
-const auth: Auth = getAuth(app);
+
+const auth: Auth =
+  getApps().length > 0
+    ? getAuth(app)
+    : initializeAuth(app, {
+        persistence: getReactNativePersistence(AsyncStorage),
+      });
+
+const db: Firestore =
+  getApps().length > 0
+    ? getFirestore(app)
+    : initializeFirestore(app, {
+        experimentalAutoDetectLongPolling: Platform.OS !== "web",
+      });
 
 // Firebase Analytics is web-only in Firebase JS SDK.
 // Use this helper when you run on web; native builds return null.
