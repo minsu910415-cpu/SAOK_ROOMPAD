@@ -711,7 +711,7 @@ export default function App() {
         return;
       }
 
-      if (!sharedSpacePricing || deductCoin <= 0) {
+      if (!sharedSpacePricing || !Number.isFinite(deductCoin) || deductCoin < 0) {
         setMembershipLookupError("공간 요금 정보를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.");
         return;
       }
@@ -765,7 +765,7 @@ export default function App() {
       return;
     }
 
-    if (!sharedSpacePricing || deductCoin <= 0) {
+    if (!sharedSpacePricing || !Number.isFinite(deductCoin) || deductCoin < 0) {
       setReservationSubmitError("공간 요금 정보를 불러오지 못했습니다. 다시 시도해 주세요.");
       return;
     }
@@ -1014,8 +1014,9 @@ export default function App() {
     ? calculateReservationDeductCoin(selectedStartTime, selectedEndTime, sharedSpacePricing)
     : 0;
   const remainCoin = ownedCoin - deductCoin;
+  // 무료 공간(deductCoin=0)도 예약 가능해야 한다 → deductCoin >= 0 허용(0이면 차감 없음).
   const canAffordReservation =
-    Boolean(matchedMembership && sharedSpacePricing && deductCoin > 0) &&
+    Boolean(matchedMembership && sharedSpacePricing && Number.isFinite(deductCoin) && deductCoin >= 0) &&
     hasEnoughCoins(
       matchedMembership?.coin_balance_free ?? 0,
       matchedMembership?.coin_balance_paid ?? 0,
