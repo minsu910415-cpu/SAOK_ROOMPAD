@@ -57,6 +57,8 @@ export type RoompadBooking = {
   status: string;
   startMs: number;
   endMs: number;
+  room_number?: string | null;
+  company_name?: string | null;
 };
 
 /** PIN 검증 + 연결등록 + 세션 발급. 성공 시 deviceToken을 내부 저장한다. */

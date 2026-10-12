@@ -588,7 +588,13 @@ export default function App() {
               id: b.id,
               start: toHHMM(startDate),
               end: toHHMM(endDate),
-              roomNumber: "-",
+              // 예약자 룸번호(없거나 "-"면 회사명, 둘 다 없으면 "예약")
+              roomNumber: (() => {
+                const rn = String(b.room_number || "").trim();
+                if (rn && rn !== "-") return rn;
+                const cn = String(b.company_name || "").trim();
+                return cn && cn !== "-" ? cn : "예약";
+              })(),
             } as Reservation;
           })
           .filter((item): item is Reservation => Boolean(item))
