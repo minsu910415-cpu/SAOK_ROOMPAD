@@ -1623,8 +1623,9 @@ export default function App() {
                 ) : null}
                 {sharedSpacePricing ? (
                   <Text style={styles.reservationPricingHint}>
-                    {sharedSpacePricing.bookingUnitLabel}당 {sharedSpacePricing.coinPerUnit.toLocaleString()}C
-                    {billingUnits > 0 ? ` · 예상 ${billingUnits}회 차감` : ""}
+                    {sharedSpacePricing.coinPerUnit > 0
+                      ? `${sharedSpacePricing.bookingUnitLabel}당 ${sharedSpacePricing.coinPerUnit.toLocaleString()}C${billingUnits > 0 ? ` · 예상 ${billingUnits}회 차감` : ""}`
+                      : "무료 이용 공간"}
                   </Text>
                 ) : null}
               </View>
@@ -1747,10 +1748,13 @@ export default function App() {
               <View style={[styles.confirmRow, styles.confirmRowTight]}>
                 <Text style={styles.confirmDeductLabel}>차감 코인</Text>
                 <Text style={styles.confirmDeductValue}>
-                  - {deductCoin.toLocaleString()} C
-                  {sharedSpacePricing && billingUnits > 0
-                    ? ` (${billingUnits}×${sharedSpacePricing.coinPerUnit.toLocaleString()}C)`
-                    : ""}
+                  {deductCoin > 0
+                    ? `- ${deductCoin.toLocaleString()} C${
+                        sharedSpacePricing && billingUnits > 0
+                          ? ` (${billingUnits}×${sharedSpacePricing.coinPerUnit.toLocaleString()}C)`
+                          : ""
+                      }`
+                    : "무료"}
                 </Text>
               </View>
               <View style={styles.confirmDivider} />
