@@ -2,7 +2,7 @@
   "expo": {
     "name": "SAOK 룸패드",
     "slug": "SAOK_ROOMPAD",
-    "version": "5.0.2",
+    "version": "5.0.3",
     "orientation": "landscape",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,7 +21,7 @@
       }
     },
     "android": {
-      "versionCode": 6,
+      "versionCode": 7,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon-foreground.png",
         "backgroundColor": "#ffffff"
