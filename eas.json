@@ -11,13 +11,15 @@
     "preview": {
       "distribution": "internal",
       "android": {
-        "buildType": "apk" 
-      }
+        "buildType": "apk"
+      },
+      "channel": "preview"
     },
     "production": {
       "android": {
         "buildType": "app-bundle"
-      }
+      },
+      "channel": "production"
     }
   },
   "submit": {

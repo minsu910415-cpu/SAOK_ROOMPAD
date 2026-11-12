@@ -2,7 +2,7 @@
   "expo": {
     "name": "SAOK 룸패드",
     "slug": "SAOK_ROOMPAD",
-    "version": "4.0.1",
+    "version": "5.0.2",
     "orientation": "landscape",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,11 +15,13 @@
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "UIBackgroundModes": ["fetch"]
+        "UIBackgroundModes": [
+          "fetch"
+        ]
       }
     },
     "android": {
-      "versionCode": 4,
+      "versionCode": 6,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon-foreground.png",
         "backgroundColor": "#ffffff"
@@ -35,6 +37,14 @@
       "eas": {
         "projectId": "5fbd0a96-4cdb-4b2f-b619-4d0d17ceef23"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/5fbd0a96-4cdb-4b2f-b619-4d0d17ceef23",
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
     }
   }
 }
